@@ -31,10 +31,13 @@
 			<div class="thumbnail">
 				<img src="https://i.pinimg.com/originals/c9/cf/40/c9cf405e6d1127660169f6319995fb34.jpg" id="slide">
 			</div>
-			<button onclick="previous()">Previous</button>
-			<button onclick="next()">Next</button>
-			<button onclick="startShow()">Begin Slide show</button>
-
+			<div class="container">
+				<button onclick="previous()">Previous</button>
+				<button onclick="next()">Next</button>
+				<button onclick="startShow()">Begin Slide show</button>
+				<button onclick="stopShow()">Stop Slide show</button>
+			</div>
+		</div>
 			<script type="text/javascript">
 				var myImages = [
 					"https://i.pinimg.com/originals/c9/cf/40/c9cf405e6d1127660169f6319995fb34.jpg",
@@ -55,24 +58,26 @@
 
 					if (pointer < 1){
 						pointer = 0;
+						document.getElementById("slide").src = myImages[pointer];
 					}
 					else {
 						pointer = pointer - 1;
+						document.getElementById("slide").src = myImages[pointer];
 					}
-					document.getElementById("slide").src = myImages[pointer];
 				}
 
 				function next(){
 					clearInterval(slideInterval);
 					slideInterval = 0; // I just do this so I know I've cleared the interval
-					
-					if (pointer > myImages.length){
-						pointer = (myImages.length - 1);
+
+					if (pointer == (myImages.length - 1)){
+						pointer = (myImages.length -1);
+						document.getElementById("slide").src = myImages[pointer];
 					}
 					else {
 						pointer = pointer + 1;
+						document.getElementById("slide").src = myImages[pointer];
 					}
-					document.getElementById("slide").src = myImages[pointer];
 				}
 
 				function startShow(){
@@ -89,7 +94,12 @@
 					document.getElementById("slide").src = myImages[pointer];
 				}
 
+				function stopShow(){
+					clearInterval(slideInterval);
+					slideInterval = 0; // I just do this so I know I've cleared the interval
+
+				}
+
 			</script>
-		</div>
 	</body>
 </html>

@@ -27,30 +27,69 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Document Object Model Drills</h1>
-			<ul>
-				<li><a href="change-h1-color.html">Change the header (h1 tag) color</a></li>
-				<li><a href="change-body-bg-color.html">Change the document (body) background color</a></li>
-				<li>DOM Selectors
-					<ul>
-						<li><a href="getElementByID.html">document.getElementById()</a></li>
-						<li><a href="getElementByClassName.html">document.getElementsByClassName()</a></li>
-						<li><a href="getElementsByTagName.html">document.getElementByTagName()</a></li>
-						<li><a href="querySelector.html">document.querySelector()</a></li>
-						<li><a href="querySelectorAll.html">document.querySelectorAll()</a></li>
-					</ul>
-				</li>
-				<li>DOM Manipulation
-					<ul>
-						<li><a href="dom-styling-with-selectors.html">Changing an element's style</a></li>
-						<li><a href="dom-adding-classes.html">Adding Style Classes</a></li>
-						<li><a href="dom-removing-classes.html">Removing Style Classes</a></li>
-						<li><a href="dom-toggle-classes.html">Toggle a Style Classes</a></li>
-						<li><a href="dom-change-contents.html">Changing content of a tag</a></li>
-						<li><a href="dom-change-tag-values.html">Changing attributes (src, href etc)</a></li>
-					</ul>
-				</li>
-			</ul>
+			<h1>Shoe logos</h1>
+			<div class="thumbnail">
+				<img src="https://i.pinimg.com/originals/c9/cf/40/c9cf405e6d1127660169f6319995fb34.jpg" id="slide">
+			</div>
+			<button onclick="previous()">Previous</button>
+			<button onclick="next()">Next</button>
+			<button onclick="startShow()">Begin Slide show</button>
+
+			<script type="text/javascript">
+				var myImages = [
+					"https://i.pinimg.com/originals/c9/cf/40/c9cf405e6d1127660169f6319995fb34.jpg",
+					"https://www.sportbuzzbusiness.fr/wp-content/uploads/2014/02/logo-PUMA.jpg",
+					"https://i.pinimg.com/originals/53/57/13/53571317d1619c765293536c9e47c7ca.jpg",
+					"https://brandingmonitor.pl/wp-content/uploads/2017/07/converse-new-logo-rebranding.png",
+					"https://i.pinimg.com/originals/89/fb/28/89fb28418966008fd4f5a1fc9208035a.jpg",
+					"https://eu1.hatstoremedia.com/hatstore/images/image-vans-kepsar-2017-02-21-115127113/555/555/0/vans-kepsar.png"
+				]
+
+				var pointer = 0;
+				var slideInterval = 0;
+
+
+				function previous(){
+					clearInterval(slideInterval);
+					slideInterval = 0; // I just do this so I know I've cleared the interval
+
+					if (pointer < 1){
+						pointer = 0;
+					}
+					else {
+						pointer = pointer - 1;
+					}
+					document.getElementById("slide").src = myImages[pointer];
+				}
+
+				function next(){
+					clearInterval(slideInterval);
+					slideInterval = 0; // I just do this so I know I've cleared the interval
+					
+					if (pointer > myImages.length){
+						pointer = (myImages.length - 1);
+					}
+					else {
+						pointer = pointer + 1;
+					}
+					document.getElementById("slide").src = myImages[pointer];
+				}
+
+				function startShow(){
+					slideInterval = setInterval(slideshow,2000);;
+				}
+
+				function slideshow(){
+					if (pointer > myImages.length){
+						pointer = 0;
+					}
+					else {
+						pointer = pointer + 1;
+					}
+					document.getElementById("slide").src = myImages[pointer];
+				}
+
+			</script>
 		</div>
 	</body>
 </html>

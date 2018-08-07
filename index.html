@@ -27,79 +27,57 @@
 	</head>
 	<body>
 		<div class="container">
-			<h1>Shoe logos</h1>
-			<div class="thumbnail">
-				<img src="https://i.pinimg.com/originals/c9/cf/40/c9cf405e6d1127660169f6319995fb34.jpg" id="slide">
-			</div>
-			<div class="container">
-				<button onclick="previous()">Previous</button>
-				<button onclick="next()">Next</button>
-				<button onclick="startShow()">Begin Slide show</button>
-				<button onclick="stopShow()">Stop Slide show</button>
-			</div>
-		</div>
+			<h1 class="myLabel">Color Picker</h1>
+			<input type="color" id="myColor"> 
+			<button onclick="whatColor()" class="btn btn-default">Apply</button>
+			<br>
+			<br>
+			<label class="myLabel">Background color&nbsp;</label><label id="colorCode" class="myLabel">#000000</label>
+			<br>
+			<label class="myLabel">Text color</label>&nbsp;<label id="colorCodeText" class="myLabel">#000000</label>
+			<p id="myText" class="myLabel">
+				Lorem ipsum dolor amet food truck enamel pin whatever williamsburg retro gluten-free. Austin flexitarian waistcoat, lyft wayfarers hammock mlkshk cray next level meggings drinking vinegar vice. Vice squid food truck, poke schlitz pop-up dreamcatcher narwhal marfa quinoa. Distillery celiac kickstarter tofu glossier. Brunch live-edge ethical, humblebrag forage vexillologist semiotics swag fashion axe chartreuse. Mustache keytar listicle YOLO yr. Lorem ipsum dolor amet food truck enamel pin whatever williamsburg retro gluten-free. Austin flexitarian waistcoat, lyft wayfarers hammock mlkshk cray next level meggings drinking vinegar vice. Vice squid food truck, poke schlitz pop-up dreamcatcher narwhal marfa quinoa. Distillery celiac kickstarter tofu glossier. Brunch live-edge ethical, humblebrag forage vexillologist semiotics swag fashion axe chartreuse. Mustache keytar listicle YOLO yr.
+			</p> 
+			<p class="myLabel">
+				Lorem ipsum dolor amet chartreuse waistcoat live-edge fam kale chips vape. Lo-fi forage chicharrones, keytar man braid la croix celiac gochujang bespoke crucifix. Microdosing before they sold out hoodie, umami cornhole chicharrones direct trade vegan chartreuse pop-up quinoa blog. Art party seitan tousled, venmo yuccie butcher roof party shaman artisan 3 wolf moon bicycle rights lomo jianbing street art pabst. Vape flannel hot chicken, PBR&B intelligentsia butcher cliche. Brooklyn cloud bread yuccie truffaut man bun try-hard art party. Hell of master cleanse cardigan chambray echo park, mustache yr church-key aesthetic blog unicorn man braid fam. Single-origin coffee authentic 8-bit, messenger bag brunch lo-fi af kogi raw denim heirloom fanny pack skateboard. Sriracha put a bird on it distillery biodiesel air plant tousled. Subway tile keytar pickled trust fund ramps. Waistcoat taiyaki stumptown bespoke tilde.
+			</p>
 			<script type="text/javascript">
-				var myImages = [
-					"https://i.pinimg.com/originals/c9/cf/40/c9cf405e6d1127660169f6319995fb34.jpg",
-					"https://www.sportbuzzbusiness.fr/wp-content/uploads/2014/02/logo-PUMA.jpg",
-					"https://i.pinimg.com/originals/53/57/13/53571317d1619c765293536c9e47c7ca.jpg",
-					"https://brandingmonitor.pl/wp-content/uploads/2017/07/converse-new-logo-rebranding.png",
-					"https://i.pinimg.com/originals/89/fb/28/89fb28418966008fd4f5a1fc9208035a.jpg",
-					"https://eu1.hatstoremedia.com/hatstore/images/image-vans-kepsar-2017-02-21-115127113/555/555/0/vans-kepsar.png"
-				]
+				function whatColor(){
+					document.body.style.backgroundColor = myColor.value;	
+					document.getElementById("colorCode").textContent = myColor.value;
+					document.getElementById("colorCodeText").textContent = myColor.value;
 
-				var pointer = 0;
-				var slideInterval = 0;
-
-
-				function previous(){
-					clearInterval(slideInterval);
-					slideInterval = 0; // I just do this so I know I've cleared the interval
-
-					if (pointer < 1){
-						pointer = 0;
-						document.getElementById("slide").src = myImages[pointer];
-					}
-					else {
-						pointer = pointer - 1;
-						document.getElementById("slide").src = myImages[pointer];
+					var elements = document.getElementsByClassName("myLabel");
+					for (var counter = 0; counter < elements.length; counter++) {
+    					elements[counter].style.color = invertColor(myColor.value);
 					}
 				}
 
-				function next(){
-					clearInterval(slideInterval);
-					slideInterval = 0; // I just do this so I know I've cleared the interval
-
-					if (pointer == (myImages.length - 1)){
-						pointer = (myImages.length -1);
-						document.getElementById("slide").src = myImages[pointer];
-					}
-					else {
-						pointer = pointer + 1;
-						document.getElementById("slide").src = myImages[pointer];
-					}
+				function invertColor(hex) {
+				    if (hex.indexOf('#') === 0) {
+				        hex = hex.slice(1);
+				    }
+				    // convert 3-digit hex to 6-digits.
+				    if (hex.length === 3) {
+				        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+				    }
+				    if (hex.length !== 6) {
+				        throw new Error('Invalid HEX color.');
+				    }
+				    // invert color components
+				    var r = (255 - parseInt(hex.slice(0, 2), 16)).toString(16),
+				        g = (255 - parseInt(hex.slice(2, 4), 16)).toString(16),
+				        b = (255 - parseInt(hex.slice(4, 6), 16)).toString(16);
+				    // pad each with zeros and return
+				    return '#' + padZero(r) + padZero(g) + padZero(b);
 				}
 
-				function startShow(){
-					slideInterval = setInterval(slideshow,2000);;
+				function padZero(str, len) {
+				    len = len || 2;
+				    var zeros = new Array(len).join('0');
+				    return (zeros + str).slice(-len);
 				}
-
-				function slideshow(){
-					if (pointer > myImages.length){
-						pointer = 0;
-					}
-					else {
-						pointer = pointer + 1;
-					}
-					document.getElementById("slide").src = myImages[pointer];
-				}
-
-				function stopShow(){
-					clearInterval(slideInterval);
-					slideInterval = 0; // I just do this so I know I've cleared the interval
-
-				}
-
 			</script>
+		</div>
 	</body>
 </html>

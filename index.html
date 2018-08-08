@@ -47,7 +47,7 @@
 				function whatColor(){
 					document.body.style.backgroundColor = myColor.value;	
 					document.getElementById("colorCode").textContent = myColor.value;
-					document.getElementById("colorCodeText").textContent = myColor.value;
+					document.getElementById("colorCodeText").textContent = invertColor(myColor.value);
 
 					var elements = document.getElementsByClassName("myLabel");
 					for (var counter = 0; counter < elements.length; counter++) {

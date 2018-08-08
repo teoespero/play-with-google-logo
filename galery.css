@@ -41,3 +41,7 @@ th {
 .table th {
    text-align: center;   
 }
+
+input[type=color].form-control {
+    padding: 0px;
+}

@@ -28,19 +28,21 @@
 	<body>
 		<div class="container">
 			<h1 class="myLabel">Color Picker</h1>
-			<input type="color" id="myColor"> 
-			<button onclick="whatColor()" class="btn btn-default">Apply</button>
-			<br>
-			<br>
-			<label class="myLabel">Background color&nbsp;</label><label id="colorCode" class="myLabel">#000000</label>
-			<br>
-			<label class="myLabel">Text color</label>&nbsp;<label id="colorCodeText" class="myLabel">#000000</label>
-			<p id="myText" class="myLabel">
-				Lorem ipsum dolor amet food truck enamel pin whatever williamsburg retro gluten-free. Austin flexitarian waistcoat, lyft wayfarers hammock mlkshk cray next level meggings drinking vinegar vice. Vice squid food truck, poke schlitz pop-up dreamcatcher narwhal marfa quinoa. Distillery celiac kickstarter tofu glossier. Brunch live-edge ethical, humblebrag forage vexillologist semiotics swag fashion axe chartreuse. Mustache keytar listicle YOLO yr. Lorem ipsum dolor amet food truck enamel pin whatever williamsburg retro gluten-free. Austin flexitarian waistcoat, lyft wayfarers hammock mlkshk cray next level meggings drinking vinegar vice. Vice squid food truck, poke schlitz pop-up dreamcatcher narwhal marfa quinoa. Distillery celiac kickstarter tofu glossier. Brunch live-edge ethical, humblebrag forage vexillologist semiotics swag fashion axe chartreuse. Mustache keytar listicle YOLO yr.
-			</p> 
-			<p class="myLabel">
-				Lorem ipsum dolor amet chartreuse waistcoat live-edge fam kale chips vape. Lo-fi forage chicharrones, keytar man braid la croix celiac gochujang bespoke crucifix. Microdosing before they sold out hoodie, umami cornhole chicharrones direct trade vegan chartreuse pop-up quinoa blog. Art party seitan tousled, venmo yuccie butcher roof party shaman artisan 3 wolf moon bicycle rights lomo jianbing street art pabst. Vape flannel hot chicken, PBR&B intelligentsia butcher cliche. Brooklyn cloud bread yuccie truffaut man bun try-hard art party. Hell of master cleanse cardigan chambray echo park, mustache yr church-key aesthetic blog unicorn man braid fam. Single-origin coffee authentic 8-bit, messenger bag brunch lo-fi af kogi raw denim heirloom fanny pack skateboard. Sriracha put a bird on it distillery biodiesel air plant tousled. Subway tile keytar pickled trust fund ramps. Waistcoat taiyaki stumptown bespoke tilde.
-			</p>
+			<form class="form-inline">
+				<input type="color" id="myColor"> 
+				<button onclick="whatColor()" class="btn btn-default">Apply</button>
+				<br>
+				<br>
+				<label class="myLabel">Background color&nbsp;</label><label id="colorCode" class="myLabel">#000000</label>
+				<br>
+				<label class="myLabel">Text color</label>&nbsp;<label id="colorCodeText" class="myLabel">#000000</label>
+				<p id="myText" class="myLabel">
+					Lorem ipsum dolor amet food truck enamel pin whatever williamsburg retro gluten-free. Austin flexitarian waistcoat, lyft wayfarers hammock mlkshk cray next level meggings drinking vinegar vice. Vice squid food truck, poke schlitz pop-up dreamcatcher narwhal marfa quinoa. Distillery celiac kickstarter tofu glossier. Brunch live-edge ethical, humblebrag forage vexillologist semiotics swag fashion axe chartreuse. Mustache keytar listicle YOLO yr. Lorem ipsum dolor amet food truck enamel pin whatever williamsburg retro gluten-free. Austin flexitarian waistcoat, lyft wayfarers hammock mlkshk cray next level meggings drinking vinegar vice. Vice squid food truck, poke schlitz pop-up dreamcatcher narwhal marfa quinoa. Distillery celiac kickstarter tofu glossier. Brunch live-edge ethical, humblebrag forage vexillologist semiotics swag fashion axe chartreuse. Mustache keytar listicle YOLO yr.
+				</p> 
+				<p class="myLabel">
+					Lorem ipsum dolor amet chartreuse waistcoat live-edge fam kale chips vape. Lo-fi forage chicharrones, keytar man braid la croix celiac gochujang bespoke crucifix. Microdosing before they sold out hoodie, umami cornhole chicharrones direct trade vegan chartreuse pop-up quinoa blog. Art party seitan tousled, venmo yuccie butcher roof party shaman artisan 3 wolf moon bicycle rights lomo jianbing street art pabst. Vape flannel hot chicken, PBR&B intelligentsia butcher cliche. Brooklyn cloud bread yuccie truffaut man bun try-hard art party. Hell of master cleanse cardigan chambray echo park, mustache yr church-key aesthetic blog unicorn man braid fam. Single-origin coffee authentic 8-bit, messenger bag brunch lo-fi af kogi raw denim heirloom fanny pack skateboard. Sriracha put a bird on it distillery biodiesel air plant tousled. Subway tile keytar pickled trust fund ramps. Waistcoat taiyaki stumptown bespoke tilde.
+				</p>
+			</form>
 			<script type="text/javascript">
 				function whatColor(){
 					document.body.style.backgroundColor = myColor.value;	
